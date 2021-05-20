@@ -20,72 +20,50 @@
 % \usepackage[abbrvbib, preprint]{jmlr2e}
 
 \usepackage{jmlr2e}
+\usepackage{xcolor}
 
 % Definitions of handy macros can go here
 
 \newcommand{\dataset}{{\cal D}}
 \newcommand{\fracpartial}[2]{\frac{\partial #1}{\partial  #2}}
+\newcommand{\ruofan}[1]{\textcolor{red}{#1}}
+
+
 
 % Heading arguments are {volume}{year}{pages}{date submitted}{date published}{paper id}{author-full-names}
 
-\jmlrheading{1}{2000}{1-48}{4/00}{10/00}{meila00a}{Marina Meil\u{a} and Michael I. Jordan}
+% \jmlrheading{1}{2000}{1-48}{4/00}{10/00}{meila00a}{Marina Meil\u{a} and Michael I. Jordan}
 
 % Short headings should be running head and authors last names
 
-\ShortHeadings{Learning with Mixtures of Trees}{Meil\u{a} and Jordan}
+\ShortHeadings{A Literature Survey on Active Learning}{Ruofan et al.}
 \firstpageno{1}
 
 \begin{document}
+\title{A Literature Survey on Active Learning}
 
-\title{Learning with Mixtures of Trees}
-
-\author{\name Marina Meil\u{a} \email mmp@stat.washington.edu \\
-       \addr Department of Statistics\\
-       University of Washington\\
-       Seattle, WA 98195-4322, USA
+\author{\name Ruofan Liu \email e0134091@u.nus.edu \\
+       \addr School of Computing\\
+       National University of Singapore\\
        \AND
-       \name Michael I.\ Jordan \email jordan@cs.berkeley.edu \\
-       \addr Division of Computer Science and Department of Statistics\\
-       University of California\\
-       Berkeley, CA 94720-1776, USA}
+       \name Yun Lin \email llmhyy@gmail.com \\
+       \addr School of Computing\\
+       National University of Singapore\\}
 
 \editor{Kevin Murphy and Bernhard Sch{\"o}lkopf}
 
 \maketitle
-
-\begin{abstract}%   <- trailing '%' for backward compatibility of .sty file
-This paper describes the mixtures-of-trees model, a probabilistic 
-model for discrete multidimensional domains.  Mixtures-of-trees 
-generalize the probabilistic trees of \citet{chow:68}
-in a different and complementary direction to that of Bayesian networks.
-We present efficient algorithms for learning mixtures-of-trees 
-models in maximum likelihood and Bayesian frameworks. 
-We also discuss additional efficiencies that can be
-obtained when data are ``sparse,'' and we present data 
-structures and algorithms that exploit such sparseness.
-Experimental results demonstrate the performance of the 
-model for both density estimation and classification. 
-We also discuss the sense in which tree-based classifiers
-perform an implicit form of feature selection, and demonstrate
-a resulting insensitivity to irrelevant attributes.
+\begin{abstract}%   
+Active learning is a special machine learning algorithm during which users can interact with the database to help model evolving. The common scenario of active learning is when there is an immature model trained with limited amount of \textit{labelled} data, we would like to minimize the additional annotation effort while maximizing model performance gain. \ruofan{Todo}
 \end{abstract}
 
 \begin{keywords}
-  Bayesian Networks, Mixture Models, Chow-Liu Trees
+  Active Learning, Deep Learning
 \end{keywords}
 
-\section{Introduction}
 
-Probabilistic inference has become a core technology in AI,
-largely due to developments in graph-theoretic methods for the 
-representation and manipulation of complex probability 
-distributions~\citep{pearl:88}.  Whether in their guise as 
-directed graphs (Bayesian networks) or as undirected graphs (Markov 
-random fields), \emph{probabilistic graphical models} have a number 
-of virtues as representations of uncertainty and as inference engines.  
-Graphical models allow a separation between qualitative, structural
-aspects of uncertain knowledge and the quantitative, parametric aspects 
-of uncertainty...\\
+\input{introduction}
+\input{definition}
 
 {\noindent \em Remainder omitted in this sample. See http://www.jmlr.org/papers/ for full paper.}
 
@@ -96,8 +74,7 @@ from the National Science Foundation (NSF grant IIS-9988642)
 and the Multidisciplinary Research Program of the Department
 of Defense (MURI N00014-00-1-0637). }
 
-% Manual newpage inserted to improve layout of sample file - not
-% needed in general before appendices/bibliography.
+
 
 \newpage
 
@@ -140,6 +117,6 @@ by $H$. We aim to show that $\fracpartial{I_{uv}}{P_{v0}} < 0$....\\
 
 
 \vskip 0.2in
-\bibliography{sample}
+\bibliography{ref}
 
 \end{document}

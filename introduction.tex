@@ -1,0 +1,25 @@
+\section{Introduction}% 
+\ruofan{Todo: background}
+
+In supervised machine learning, model fitting requires a large amount of labelled dataset. 
+
+The main difference between active learner and passive learner is that: 
+In active learning framework, the learner (model) is able to query the label in oracle (human annotator) for any selected sample. 
+As a result, the database is growing and model is continuously evolving. 
+While in passive learning, the learner is not assumed to have access to the oracle. 
+Model evolving relies on the refinement of learning algorithm design not on the expansion of training database. 
+
+There are mainly three scenarios in active learning \citep{settles2009active}: \textbf{membership query synthesis}, \textbf{stream-based selective sampling} and \textbf{pool-based sampling}. 
+In first scenario, the learner would generates or constructs new data based on the estimated distribution of available training data. 
+The generated data are then sent to oracle, learner will utilize the received data-label pairs to finetune itself. 
+This approach is limited by the quality of generated data, as the artificially constructed data may not lie on the data manifold \citep{baum1992query}. 
+The latter two scenarios make an assumption that there is a pool of unlabelled data to which the learner have access. 
+This assumption exempts the learner from the need of constructing data, the key challenge is on how to select the most \textit{informative} samples to label. 
+The difference between stream-based selective sampling and pool-based sampling is how data is queried by the learner. 
+In stream-based selective sampling, unlabelled instances are fed one by one sequentially. Depending on the \textit{informativeness} of the instance, learner has the option to either "discard" or "query" this instance. If the learner's decision is to "query", oracle would annotate this instance and feedback to learner. 
+In contrast, pool-based sampling starts with a collection of unlabelled data. \textit{Informativeness} scores are computed for all instances at once. Afterwards, top-K samples with the highest informativeness scores are selected by the learner to query. The rest samples are "discarded". 
+Compared to the former two scenarios,pool-based sampling appears to be a more common setting. In which there is no constraint on the availability and the arrival rate of unlabelled data. Thus, in this survey, we primarily focus on pool-based sampling scenario. 
+
+As mentioned before, the key challenge in pool-based sampling is the effectiveness of \textbf{query strategy}. In other words: (1) How to define \textit{informativeness}? (2) How to quantify \textit{informativeness}? 
+Besides query strategy design, another concern is the \textbf{learner evolution strategy}. To be more specific: (1) Does the query strategy jointly evolve with the learner? Or rather, the learner's training is independent of the query process? (2) Is the learner engaged in "pseudo-labelling" informative instances besides receiving labelled data from oracle (i.e. semi-supervised fashion)? Or instead, the labelling is purely relied on oracle (i.e. supervised)? 
+
